@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import {} from "react-router-dom"
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import Wrapper from "../../assets/wrappers/RegisterPage"
 import { Logo, FormRow, Alert } from "../../components"
 import { useAppContext } from "../../context/appContext"
@@ -15,7 +15,18 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState)
 
-  const { isLoading, showAlert, displayAlert } = useAppContext()
+  const { isLoading, showAlert, displayAlert, user, userSetup } =
+    useAppContext()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/dashboard")
+      }, 3000)
+    }
+  }, [user, navigate])
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember })
@@ -34,9 +45,17 @@ const Register = () => {
     }
     const currentUser = { username, email, password }
     if (isMember) {
-      console.log(currentUser)
+      userSetup({
+        currentUser,
+        endPoint: "login",
+        alertText: "Login Successfull",
+      })
     } else {
-      console.log(currentUser)
+      userSetup({
+        currentUser,
+        endPoint: "register",
+        alertText: "User registered successfully",
+      })
     }
   }
 

@@ -4,9 +4,9 @@ import { ImProfile } from "react-icons/im"
 import { TbNotes } from "react-icons/tb"
 
 const links = [
-  { id: 1, text: "Notes", path: "/", icon: <TbNotes /> },
-  { id: 2, text: "Add Note", path: "all-notes", icon: <MdEditNote /> },
-  { id: 3, text: "Update Note", path: "add-note", icon: <MdUpdate /> },
+  { id: 1, text: "Notes", path: "/dashboard", icon: <TbNotes /> },
+  { id: 2, text: "Add Note", path: "addNote", icon: <MdEditNote /> },
+  { id: 3, text: "Update Note", path: "updateNote", icon: <MdUpdate /> },
   { id: 4, text: "Profile", path: "profile", icon: <ImProfile /> },
 ]
 
