@@ -6,6 +6,12 @@ import {
   SETUP_USER_SUCCESS,
   SETUP_USER_ERROR,
   LOGOUT_USER,
+  CREATE_NOTE_BEGIN,
+  CREATE_NOTE_SUCCESS,
+  CREATE_NOTE_ERROR,
+  CLEAR_VALUES,
+  GET_NOTE_BEGIN,
+  GET_NOTE_SUCCESS,
 } from "./actions"
 import { initialState } from "./appContext"
 
@@ -62,6 +68,43 @@ const reducer = (state, action) => {
       token: null,
     }
   }
+
+  if (action.type === CLEAR_VALUES) {
+  }
+  if (action.type === CREATE_NOTE_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+  if (action.type === CREATE_NOTE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Note is created",
+    }
+  }
+  if (action.type === CREATE_NOTE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    }
+  }
+  if (action.type === GET_NOTE_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false }
+  }
+  if (action.type === GET_NOTE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      notes: action.payload.notes,
+      totalNotes: action.payload.totalNotes,
+      numOfPages: action.payload.numOfPages,
+    }
+  }
+
   throw new Error(`no such action : ${action.type}`)
 }
 

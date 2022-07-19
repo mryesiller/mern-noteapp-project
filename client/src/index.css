@@ -267,7 +267,7 @@ ul {
   width: 100%;
   padding: 0.375rem 0.75rem;
   border-radius: var(--borderRadius);
-  background: var(--backgroundColor);
+  background: var(--rose-50);
   border: 1px solid var(--grey-200);
 }
 .form-input,
@@ -280,7 +280,7 @@ ul {
 }
 
 .form-textarea {
-  height: 7rem;
+  height: 10rem;
 }
 ::placeholder {
   font-family: inherit;

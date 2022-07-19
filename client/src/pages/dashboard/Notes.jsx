@@ -1,7 +1,8 @@
 import React from "react"
+import { NoteContainer } from "../../components"
 
 const Notes = () => {
-  return <div>Notes</div>
+  return <NoteContainer />
 }
 
 export default Notes

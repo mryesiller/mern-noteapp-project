@@ -13,7 +13,7 @@ require("express-async-errors")
 require("./config/db.config")()
 
 var authRouters = require("./routes/auth.Routes")
-//var noteRouters = require("./routes/note.Routes")
+var noteRouters = require("./routes/note.Routes")
 
 var app = express()
 
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/v1/auth", authRouters)
-//app.use("/api/v1/notes", protectedRoute, noteRouters)
+app.use("/api/v1/notes", protectedRoute, noteRouters)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
