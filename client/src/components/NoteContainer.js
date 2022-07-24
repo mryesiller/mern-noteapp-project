@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useAppContext } from "../context/appContext"
 import Loading from "./Loading"
 import Wrapper from "../assets/wrappers/NoteContainer"
+import Note from "./Note"
 
 const NoteContainer = () => {
   const { getAllNotes, notes, totalNotes, page, isLoading } = useAppContext()
@@ -23,6 +24,19 @@ const NoteContainer = () => {
     <Wrapper>
       <h5>
         {totalNotes} note{notes.length > 1 && "s"} found
+        {notes.title}
+        <div className="jobs">
+          {notes.map((note) => {
+            return (
+              <Note
+                key={note._id}
+                title={note.title}
+                note={note.notes}
+                createdAt={note.createdAt}
+              />
+            )
+          })}
+        </div>
       </h5>
     </Wrapper>
   )

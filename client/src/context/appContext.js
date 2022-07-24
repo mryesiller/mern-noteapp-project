@@ -138,6 +138,7 @@ const AppProvider = ({ children }) => {
     try {
       const { data } = await authFetch.get("http://localhost:5000/api/v1/notes")
       const { notes, totalNotes, numOfPages } = data
+      console.log(notes)
       dispatch({
         type: GET_NOTE_SUCCESS,
         payload: { notes, totalNotes, numOfPages },
@@ -147,6 +148,9 @@ const AppProvider = ({ children }) => {
     }
     clearAlert()
   }
+
+  const setEditNote = async () => {}
+  const deleteNote = async () => {}
 
   return (
     <AppContext.Provider
@@ -158,6 +162,8 @@ const AppProvider = ({ children }) => {
         logoutUser,
         createNote,
         getAllNotes,
+        setEditNote,
+        deleteNote,
       }}
     >
       {children}
